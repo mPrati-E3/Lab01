@@ -24,5 +24,13 @@ public class Parole {
 	public void reset() {
 		this.elenco= new ArrayList<String>();
 	}
+	
+	public boolean cancellazione(String s) {
+		if (this.elenco.contains(s)) {
+			this.elenco.remove(new String(s));
+			return true;
+		}
+		return false;
+	}
 
 }
