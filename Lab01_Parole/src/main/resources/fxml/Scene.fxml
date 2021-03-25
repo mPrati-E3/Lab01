@@ -43,6 +43,11 @@
                </HBox.margin>
             </Button>
             <Button fx:id="btnReset" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#doReset" text="Reset" />
+            <Label fx:id="lblTime">
+               <HBox.margin>
+                  <Insets left="10.0" top="5.0" />
+               </HBox.margin>
+            </Label>
          </children>
       </HBox>
    </bottom>

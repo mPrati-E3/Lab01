@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -29,6 +30,9 @@ public class FXMLController {
 
     @FXML
     private Button btnInserisci;
+    
+    @FXML
+    private Label lblTime;
 
     @FXML
     private TextArea txtResult;
@@ -47,18 +51,21 @@ public class FXMLController {
     	String inser = txtParola.getText();
     	if (inser == "") {
     		txtResult.appendText("La parola non deve essere vuota! \n");
+    		this.lblTime.setText(Long.toString(System.nanoTime()));
     		return;
     	}
     	this.elenco.addParola(inser);
     	txtResult.clear();
     	List <String> risultato = this.elenco.getElenco();
     	this.visualizza(risultato);
+    	this.lblTime.setText(Long.toString(System.nanoTime()));
     }
 
     @FXML
     void doReset(ActionEvent event) {
     	elenco.reset();
     	txtResult.clear();
+    	this.lblTime.setText(Long.toString(System.nanoTime()));
     }
     
     @FXML
@@ -70,7 +77,7 @@ public class FXMLController {
     		txtResult.appendText("Parola non trovata! \n\n");
     	}
     	this.visualizza(this.elenco.getElenco());
-
+    	this.lblTime.setText(Long.toString(System.nanoTime()));
     }
 
     @FXML
@@ -79,7 +86,8 @@ public class FXMLController {
         assert btnInserisci != null : "fx:id=\"btnInserisci\" was not injected: check your FXML file 'Scene.fxml'.";
         assert txtResult != null : "fx:id=\"txtResult\" was not injected: check your FXML file 'Scene.fxml'.";
         assert btnReset != null : "fx:id=\"btnReset\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert btnCancella != null : "fx:id=\"btnReset\" was not injected: check your FXML file 'Scene.fxml'.";
+        assert btnCancella != null : "fx:id=\"btnCancella\" was not injected: check your FXML file 'Scene.fxml'.";
+        assert lblTime != null : "fx:id=\"lblTime\" was not injected: check your FXML file 'Scene.fxml'.";
     }
     
     public void setModel(Parole m) {
